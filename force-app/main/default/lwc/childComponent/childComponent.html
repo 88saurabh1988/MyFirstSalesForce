@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Child Component">
+        <div class="slds-m-around_medium">
+            {childVariable}
+        </div>
+        
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" label="First Name" name="fName" onchange={handleChildChange}></lightning-input>
+        </div>
+
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" label="Last Name" name="lName" onchange={handleChildChange}></lightning-input>
+        </div>
+
+        <div class="slds-m-around_medium slds-align_absolute-center">
+            <lightning-button variant="brand" label="Send Message to Parent" onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

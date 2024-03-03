@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Parent Section">
+        <div class="slds-m-left_x-large">
+            <lightning-input type="text" label="Parent Name" onchange={handleChange}></lightning-input>
+            <div class="slds-m-left_x-large">
+                <p>First Name: {fName}</p>
+                <p>Last Name: {lName}</p>
+            </div>
+            <div>
+                <!-- getchildmessage event is created in child component but use it in parent with prefix ongetchildmessage  -->
+                <c-child-component child-variable={message} ongetchildmessage={handleChildMethod}></c-child-component>
+             </div>
+        </div>
+    </lightning-card>
+</template>

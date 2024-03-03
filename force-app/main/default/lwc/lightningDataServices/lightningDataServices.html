@@ -1,0 +1,24 @@
+<template>
+    <!-- Showing form with edit option -->
+    <lightning-card title="Craete/Update Contact">
+        <lightning-record-form object-api-name={objectApiName} record-id={recordId} fields={fildes}></lightning-record-form>
+    </lightning-card>
+
+    <!-- Showing form with direct editable option -->
+    <lightning-card title="Craete/Update Contact with Custom Field">
+        <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId}>
+            <lightning-input-field field-name={name}></lightning-input-field>
+            <lightning-input-field field-name={phone}></lightning-input-field>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" type="submit" label="Save"></lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </lightning-card>
+
+    <lightning-card title="View">
+        <lightning-record-view-form object-api-name={objectApiName} record-id={recordId}>
+            <lightning-output-field field-name={name}></lightning-output-field>
+            <lightning-output-field field-name={phone}></lightning-output-field>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>

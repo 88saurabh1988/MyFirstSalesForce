@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title="Custom Account Detail">
+            <div class="slds-box slds-theme–default">
+                <div>
+                    <lightning-input type="search" label="Search here" onchange={filterAccount}></lightning-input>
+                </div>
+                
+                <!-- <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                    <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default" icon-name="utility:search"></lightning-icon>
+                    <input size="5" type="text" id="text-input-id-1" placeholder="Placeholder Text" class="slds-input" onchange={filterAccount} />
+                </div> -->
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                        <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                Id
+                            </th>
+                            <th class="" scope="col">
+                                Name
+                            </th>
+                            <th class="" scope="col">
+                                Phone
+                            </th>
+                            <!-- <th class="" scope="col">
+                                File Type
+                            </th>
+                            <th class="" scope="col">
+                                File Extension
+                            </th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template iterator:it={accountDetailData}>
+                            <tr class="slds-hint-parent" key = {it.value.Id}>
+                                <td data-label="Id">
+                                    <div class="slds-cell-wrap">{it.value.Id}</div>
+                                </td>
+                                <td data-label="Account Name">
+                                    <div class="slds-cell-wrap">{it.value.Name}</div>
+                                </td>
+                                <td data-label= "Phone#">
+                                    <div class="slds-cell-wrap">{it.value.Phone}</div>
+                                </td>
+                                <!-- <td data-label="File Type">
+                                    <div class="slds-cell-wrap">{it.value.type}</div>
+                                </td>
+                                <td data-label="File Extension">
+                                    <div class="slds-cell-wrap">{it.value.ext}</div>
+                                </td> -->
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <div class="slds-p-top_x-small">Note : All files are scheduled for SFTP upload</div>
+            </div>
+    </lightning-card>
+</template>

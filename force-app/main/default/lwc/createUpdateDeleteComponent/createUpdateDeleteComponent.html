@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Insert Update Delete" icon-name="action:new_lead">
+        <template if:true={isLoading}>
+            <lightning-spinner size="large" alternative-text="Loading..."></lightning-spinner>
+        </template>
+            <div class="slds-m-around_small lgc-bg slds-size_6-of-12">
+                <lightning-input type="text" label="Name" name="Name" onchange={onChangeHandle}></lightning-input>
+            </div>
+            <div class="slds-m-around_small lgc-bg slds-size_6-of-12">
+                <lightning-input type="phone" label="Mobile" name="Mobile" onchange={onChangeHandle}></lightning-input>
+            </div>
+            <div class="slds-m-around_small lgc-bg slds-size_6-of-12">
+                <lightning-input type="email" label="Email" name="Email" onchange={onChangeHandle}></lightning-input>
+            </div>
+            <div class="slds-m-around_small lgc-bg slds-size_6-of-12">
+                <lightning-combobox label="Status" name="Status" options={statusOption} onchange={onChangeHandle}></lightning-combobox>
+            </div>
+            <div class="slds-m-around_small lgc-bg slds-size_6-of-12 slds-align_absolute-center">
+                <lightning-button class="slds-m-left_small" variant="brand" label="Create" onclick={createCustomer}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="View" onclick={nevigateToView}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="New" onclick={nevigateToNew}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="Edit" onclick={nevigateToEdit}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="View All Record" onclick={nevigateToAllRecord}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="Home" onclick={nevigateToHome}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="Customer Registration Tab" onclick={nevigateToCustomerRegistrationTab}></lightning-button>
+                <lightning-button class="slds-m-left_small" variant="brand" label="URL" onclick={nevigateToURL}></lightning-button>
+            </div>
+        
+    </lightning-card>
+</template>

@@ -1,0 +1,63 @@
+<template>
+    <template if:false={error}>
+        <lightning-card title="Family">
+    <div>
+        <lightning-button variant="brand" label="Father's Detail" onclick={parentDetails}></lightning-button>
+        <p>{parentMessage}</p>
+
+        <lightning-button variant="brand" label="Son's Detail" onclick={childDetails}></lightning-button>
+        <p>{childMessage}</p>
+
+        <lightning-button variant="brand" label="Call child method" onclick={childMethod}></lightning-button>
+        <p>{childDetail}</p>
+    </div>
+    
+    <div class="slds-m-arround_medium">
+        <lightning-input label="Name" onchange={textOnchange} value={writeValue}></lightning-input>
+    </div>
+
+    <div>
+        <template if:true = {writeValue}>
+            <p> {writeValue}</p>
+        </template>
+    </div>
+
+    <template if:true={writeValue}>
+        <!-- connect child component  -->
+        <c-child-my-first-l-w-c parent-message = {writeValue}></c-child-my-first-l-w-c>
+    </template>
+
+    <div>
+        <p>Total Account: {getAccountCount.data}</p>
+        <template if:true={getAccountList.data}>
+
+            <template for:each={getAccountList.data} for:item="acc">
+
+                <p key={acc.Id}>{acc.Name}</p>
+            </template>
+        </template>
+
+        <template if:true={getAccountList.error}>
+
+            <p>{getAccountList.error}</p>
+        </template>
+    </div>
+    <div>
+        <lightning-button label="Next" onclick={next}>
+
+        </lightning-button>
+    </div>
+
+    
+        </lightning-card>
+    </template>
+    <template if:true={error}>
+        <lightning-card title="Error">
+            <div>
+                {error}
+                <br/>
+                {stack}
+            </div>
+        </lightning-card>
+    </template>
+</template>
