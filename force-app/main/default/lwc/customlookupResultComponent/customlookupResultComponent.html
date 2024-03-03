@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Lookup Records">
+        <div class="slds-m-around_medium">
+        <c-custom-lookup-lwc icon-name="standard:account" s-object-api-name="Account" label="My Accounts" onlookupupdate={lookupRecord} placeholder="search.."></c-custom-lookup-lwc>
+        </div>
+        <div class="slds-m-around_medium">
+            <c-custom-lookup-lwc icon-name="standard:contact" s-object-api-name="Contact" label="My Contact"
+                onlookupupdate={lookupRecord} placeholder="search.."></c-custom-lookup-lwc>
+        </div>
+        <div class="slds-m-around_medium">
+            <c-custom-lookup-lwc icon-name="standard:opportunity" s-object-api-name="Opportunity" label="Opportunity"
+                onlookupupdate={lookupRecord} placeholder="search.."></c-custom-lookup-lwc>
+        </div>
+    </lightning-card>
+</template>
