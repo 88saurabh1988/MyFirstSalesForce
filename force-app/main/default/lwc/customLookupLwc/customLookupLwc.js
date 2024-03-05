@@ -32,6 +32,9 @@ export default class CustomLookupLwc extends LightningElement {
     //         });
     //      }
     // }
+    connectedCallback(){
+       //console.log(this.template.querySelector('.rocky').value()==null?'':this.template.querySelector('.rocky').value());
+    }
     // wire function property to fetch search record based on user input
     @wire(fetchLookupData, { searchKey: '$searchKey' , sObjectApiName : '$sObjectApiName' })
      searchResult(value) {
@@ -103,7 +106,8 @@ handelSelectRecordHelper(){
      pillDiv.classList.add('slds-show');     
 }
 // send selected lookup record to parent component using custom event
-    lookupUpdatehandler(value){    
+    lookupUpdatehandler(value){  
+    console.log('----- value ------',value);
     const oEvent = new CustomEvent('lookupupdate',
     {
         'detail': {selectedRecord: value}
