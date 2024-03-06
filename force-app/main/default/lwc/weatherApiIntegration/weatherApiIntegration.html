@@ -1,0 +1,16 @@
+<template>
+<div class="slds-size_6-of-12">
+    <lightning-card title="Weather Forcasting">
+        <div class="slds-m-around_small">
+            <lightning-input label="Enter City" onchange={cityHandle}></lightning-input>
+        </div>
+        <div class="slds-m-around_small">
+            <lightning-button label="Weather Forcast" variant="brand" onclick={weatherForcastHandle}></lightning-button>
+        </div>
+        <div if:true={weatherIcon} class="slds-m-around_small">
+            <img src={weatherIcon} alt="Weather icon not fount"/>
+            <strong>{weatherText}</strong>
+        </div>
+    </lightning-card>
+</div>
+</template>
