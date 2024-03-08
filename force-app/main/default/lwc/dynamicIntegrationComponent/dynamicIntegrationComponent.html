@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Dynamic Interaction Account">
+        <div class="slds-m-around_small" lwc:if={accData}>
+            <lightning-datatable
+            key-field="Id"
+            data={accData}
+            columns={column}
+            max-row-selection="1"
+            onrowselection={rowHandle}
+            ></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

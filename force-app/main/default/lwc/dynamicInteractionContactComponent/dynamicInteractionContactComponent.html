@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Dynamic Interaction Contact">
+        <div class="slds-m-around_small" lwc:if={contactData}>
+            <lightning-datatable
+            key-field="Id"
+            data={contactData}
+            columns={column}
+            ></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
