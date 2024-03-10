@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title={title}>
+        <!--<lightning-record-picker
+    label="Accounts"
+    placeholder="Search Accounts..."
+    object-api-name="Account"
+    filter={filter}
+>
+</lightning-record-picker> -->
+<div class="slds-m-around_small lgc-bg slds-size_6-of-12">
+        <lightning-record-picker
+        label="Select a record"
+        placeholder="Search..."
+        object-api-name={objectApiName}
+        value={initialValue}
+        onchange={handleChange}
+        filter={filter}
+        ></lightning-record-picker>
+    </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Publisher" icon-name="standard:account">
+        <lightning-datatable
+        data={accData}
+        columns={column}
+        key-field="id"
+        max-row-selection="1"
+        onrowselection={handleRow}
+        ></lightning-datatable>
+    </lightning-card>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <template if:true={caseData}>
+        <lightning-card title="Case Subscriber" icon-name="standard:case">
+            <template for:each={caseData} for:item="cas">
+                <lightning-card key={cas.Id} title={cas.CaseNumber} icon-name="standard:case">
+                    <div class="slds-m-around_medium">
+                        {cas.AccountId} <br/>
+                        {cas.CaseNumber} <br/>
+                        {cas.Account.Name} <br/>
+                        {cas.Status} <br/>
+                        {cas.Origin} 
+                    </div>
+                </lightning-card>
+            </template>
+        </lightning-card>
+    </template>
+</template>

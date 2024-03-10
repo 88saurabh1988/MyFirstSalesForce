@@ -1,0 +1,18 @@
+<template>
+    <template if:true={contactData}>
+        <lightning-card title="Contact Subscriber" icon-name="standard:contact">
+            <template for:each={contactData} for:item="con">
+                <lightning-card key={con.Id} title={con.FirstName} icon-name="standard:contact">
+                    <div class="slds-m-around_medium">
+                        {con.AccountId} <br/>
+                        {con.Account.Name} <br/>
+                        {con.FirstName} <br/>
+                        {con.LastName} <br/>
+                        {con.Email} <br/>
+                        {con.Phone} 
+                    </div>
+                </lightning-card>
+            </template>
+        </lightning-card>
+    </template>
+</template>
