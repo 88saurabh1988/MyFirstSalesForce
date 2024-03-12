@@ -36,4 +36,9 @@ public with sharing class AccountDetail {
         }
         return acc;
     }
+
+    @AuraEnabled
+    public static List<Account> getExportAcc(){
+        return [Select Id, Name, Phone, Website, Fax From Account];
+    }
 }

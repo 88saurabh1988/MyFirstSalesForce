@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Export Xsl/Csv" icon-name="standard:account">
+        <div>
+            <lightning-button variant="brand" label="Download" title="Download" icon-name="utility:download" onclick={handleAccount}></lightning-button>
+        </div>
+        <div if:true={exportData}>
+        <lightning-datatable
+            data={exportData}
+            columns={column}
+            key-field="Id"
+            hide-checkbox-column="true"
+        >    
+        </lightning-datatable>
+        </div>
+        
+    </lightning-card>
+
+</template>
