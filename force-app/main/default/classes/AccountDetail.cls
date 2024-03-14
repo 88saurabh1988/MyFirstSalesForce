@@ -41,4 +41,10 @@ public with sharing class AccountDetail {
     public static List<Account> getExportAcc(){
         return [Select Id, Name, Phone, Website, Fax From Account];
     }
+
+    @AuraEnabled
+    public static List<Account> getAccountBySearchKey(string searchkey){
+        string finalSearchKey='%'+searchkey+'%';
+        return [Select Id, Name, Phone, Website, Fax From Account Where Name Like:finalSearchKey];
+    }
 }
