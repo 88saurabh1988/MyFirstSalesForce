@@ -1,0 +1,125 @@
+<template>
+    <!-- <template if:true={contactData}> -->
+        <lightning-card>
+            <div class="slds-grid">
+            <div class="slds-col slds-size_5-of-12">
+                <lightning-icon class="slds-m-around_x-small slds-show_x-small slds-col" icon-name="standard:contact" title="Contact"></lightning-icon>
+                <lightning-formatted-text class="slds-text-heading_small slds-col" value="Contact Details"></lightning-formatted-text>  
+            </div>
+            <div class="slds-col slds-size_7-of-12">
+                
+                <lightning-button icon-name="utility:preview" class="slds-m-around_x-small slds-col" label="View" name="View" onclick={handleView}></lightning-button>
+                <lightning-button icon-name="utility:edit"  class="slds-m-around_x-small slds-col" label="Edit" name="Edit" onclick={handleView}></lightning-button>
+            </div>
+            </div>
+            <div class="slds-grid" if:true={viewStatus}>
+                <div class="slds-col slds-size_12-of-12">
+                <template for:each={contactData} for:item="con">
+                <div key={con.Id}>
+                    <div class="slds-m-around_x-large">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_4-of-12">
+                               <b> First Name: </b>
+                            </div>
+                            <div class="slds-col slds-size_8-of-12 slds-text-align_left">
+                                {con.FirstName}
+                            </div>
+                        </div>
+
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_4-of-12">
+                               <b> Last Name: </b>
+                            </div>
+                            <div class="slds-col slds-size_8-of-12 slds-text-align_left">
+                                {con.LastName}
+                            </div>
+                        </div>
+
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_4-of-12">
+                              <b>  Phone: </b>
+                            </div>
+                            <div class="slds-col slds-size_8-of-12 slds-text-align_left">
+                                {con.Phone}
+                            </div>
+                        </div>
+
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_4-of-12">
+                               <b> Email: </b>
+                            </div>
+                            <div class="slds-col slds-size_8-of-12 slds-text-align_left">
+                                {con.Email}
+                            </div>
+                        </div>
+                        
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_4-of-12">
+                                <b> Maling City: </b>
+                            </div>
+                            <div class="slds-col slds-size_8-of-12 slds-text-align_left">
+                                {con.MailingCity}
+                            </div>
+                        </div>
+
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_4-of-12">
+                                <b> Maling Country: </b>
+                            </div>
+                            <div class="slds-col slds-size_8-of-12 slds-text-align_left">
+                                {con.MailingCountry}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </template>
+                </div>
+            </div>
+            <div class="slds-grid" if:true={editStatus}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+                    <template lwc:if={isLoding}>
+                        <lightning-spinner size="large" alternative-text="loading...."></lightning-spinner>
+                    </template>
+                    <div class="slds-modal__container">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeModalHandle}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="samll" variant="inverse"></lightning-icon>
+                            <span class="slds-assistive-text">Cancel and close</span>
+                            </button>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Contact</h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId}>
+                                <lightning-input-field field-name={firstName}></lightning-input-field>
+                                <lightning-input-field field-name={lastName}></lightning-input-field>
+                                <lightning-input-field field-name={phone}></lightning-input-field>
+                                <lightning-input-field field-name={email}></lightning-input-field>
+                                <lightning-input-field field-name={mailingCity}></lightning-input-field>
+                                <lightning-input-field field-name={mailingCountry}></lightning-input-field>
+                                <!-- <div class="slds-align_absolute-center">
+                                    <lightning-button variant="brand" type="submit" label="Save"></lightning-button>
+                                </div> -->
+                            </lightning-record-edit-form>
+                        </div>
+                        <div class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={closeModalHandle}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={saveHandle}>Save</button>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+                    <!-- <div class="slds-col slds-size_12-of-12" if:true={recordId}>
+                        <lightning-record-form object-api-name={objectApiName} record-id={recordId} 
+                        fields={fields}></lightning-record-form>
+                    </div> -->
+            </div>
+        </lightning-card>
+        <lightning-card title="Contact Map">
+            <lightning-map
+            map-markers={mapMarkers}
+            zoom-level="15"
+            list-view="visible"
+        ></lightning-map>
+        </lightning-card>
+    <!-- </template> -->
+</template>

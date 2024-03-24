@@ -16,4 +16,9 @@ public with sharing class PubsubController {
     public static List<Contact> getContact(string accountId){
        return [Select Id, AccountId, Account.Name,FirstName, LastName, Email, Phone From Contact Where AccountId=:accountId];
     }
+
+    @AuraEnabled
+    public static List<Contact> getContactByContactId(string contactId){
+       return [Select Id, AccountId, Account.Name,FirstName, LastName, Email, Phone From Contact Where Id=:contactId];
+    }
 }

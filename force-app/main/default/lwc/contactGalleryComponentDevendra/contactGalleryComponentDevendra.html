@@ -1,3 +1,54 @@
 <template>
-    
+    <lightning-card title="Account" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <c-custom-lookup-lwc icon-name="standard:account" s-object-api-name="Account" 
+            label="Select Account" onlookupupdate={lookupRecord} placeholder="search..">
+            </c-custom-lookup-lwc>
+            </div>
+    </lightning-card>
+    <lightning-card>
+            <ul class="slds-grid">
+              <li>
+                <a data-value="active" class="active" onclick={handleGrid}>
+                  Contact Gallery
+                </a>
+              </li>
+              <li>
+                <a data-value="notActive" class="notActive" onclick={handleGrid}>
+                  Contact Grid
+                </a>
+              </li>
+            </ul>
+      <div class="slds-grid">
+        <div class="slds-col" id="contactGallery" if:true={contactGallery}>
+            <div class="slds-grid">
+                <template for:each={contactData} for:item="con">
+                    <!-- <lightning-card key={con.Id}> -->
+                    <!-- <div key={con.Id} role="presentation" onclick={handleIconClick}> -->
+                        <div key={con.Id} class="slds-col container" onclick={handleIconClick} style="margin: 1px;">
+                            <!-- {con.Id} -->
+                            <div data-recid={con.Id}>
+                                <img data-recid={con.Id} src="https://www.w3schools.com/w3css/img_avatar.png" alt="Avatar" class="image" style="width:100%"/>
+                            </div>
+                            <div class="text" data-recid={con.Id}>
+                                {con.FirstName}
+                            </div>
+                        </div>
+                    <!-- </div>  -->
+                    <!-- </lightning-card> -->
+                </template>
+            </div>
+        </div>
+        <div class="slds-col slds-size_12-of-12" id="contactGrid" if:true={contactGrid}>
+                <lightning-datatable
+                data={contactData}
+                columns={column}
+                key-field="Id"
+                selected-rows={preSelectedRows}
+                max-row-selection="1"
+                onrowselection={handleRow}
+                ></lightning-datatable>
+        </div>
+      </div>
+    </lightning-card>
 </template>
